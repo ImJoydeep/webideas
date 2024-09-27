@@ -1,0 +1,46 @@
+# Django specific
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+/static/
+/media/
+
+# If using a virtual environment, ignore the virtualenv directory
+venv/
+ENV/
+env/
+
+# Ignore the secret settings file (if you have a local settings file for dev purposes)
+local_settings.py
+
+# If you are using coverage for testing, ignore coverage files
+.coverage
+htmlcov/
+
+# Ignore PyCharm project files
+.idea/
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore VSCode project files
+.vscode/
+
+# Ignore node_modules if using npm for frontend
+node_modules/
+
+# Ignore migrations if you want (usually better to commit migrations though)
+# Uncomment the following line to ignore migration files:
+# */migrations/*
+
+# Ignore Python egg files
+*.egg-info/
+
+# Ignore compiled code
+*.py[cod]
+
+# Ignore pip dependency files
+pip-log.txt
+pip-delete-this-directory.txt
