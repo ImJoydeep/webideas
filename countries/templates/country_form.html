@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if country %}Edit Country{% else %}Add Country{% endif %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1f2d3d;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .form-container {
+            background-color: #2a3b4c;
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 600px;
+        }
+        label {
+            color: #9aa5b1;
+        }
+        .form-control {
+            background-color: #1f2d3d;
+            border: 1px solid #444;
+            color: #fff;
+        }
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: none;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .btn-back {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+        .btn-back:hover {
+            background-color: #5a6268;
+            border-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>{% if country %}Edit Country{% else %}Add Country{% endif %}</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_country_name">Country Name</label>
+                <input type="text" name="country_name" class="form-control" id="id_country_name" value="{{ form.country_name.value|default_if_none:'' }}">
+            </div>
+            <div class="form-group">
+                <label for="id_country_code">Country Code</label>
+                <input type="text" name="country_code" class="form-control" id="id_country_code" value="{{ form.country_code.value|default_if_none:'' }}">
+            </div>
+            <div class="form-group">
+                <label for="id_country_flag">Country Flag(Accept Only Image File)</label>
+                <input type="file" name="country_flag" class="form-control" id="id_country_flag">
+                {% if country and country.country_flag %}
+                <img src="{{ country.country_flag.url }}" alt="{{ country.country_name }}" width="100">
+                {% endif %}
+            </div>
+            <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary btn-danger" onclick="history.back();">Cancel</button>
+                <button type="submit" class="btn btn-primary">{% if country %}Update{% else %}Add{% endif %} Country</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
