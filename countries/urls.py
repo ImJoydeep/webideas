@@ -17,5 +17,5 @@ urlpatterns = [
     path('cities/update/<int:pk>/', views.city_update, name='city_update'),
     path('cities/delete/<int:pk>/', views.city_delete, name='city_delete'),
     path('cities/archive/<int:pk>/', views.city_archive, name='city_archive'),
-    path('cities/archive/<int:pk>/', views.city_restore_archive, name='city_restore'),
+    path('cities/unarchive/<int:pk>/', views.city_restore_archive, name='city_restore'),
 ]
