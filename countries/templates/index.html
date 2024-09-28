@@ -67,8 +67,8 @@
                             <img src="{{ country.country_flag.url }}" alt="{{ country.country_name }}" class="me-2" width="30">
                             {{ country.country_name }}
                         </td>
-                        <td>{{ country.currency }}</td>
-                        <td>{{ country.nationality }}</td>
+                        <td>{{ country.country_code }}</td>
+                        <td>{{ country.country_name }}</td>
                         <td>{{ country.cities.count }}</td>
                         <td>
                             {% if country.status == 'A' %}
